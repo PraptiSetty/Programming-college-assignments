@@ -1,0 +1,78 @@
+import javax.swing.JOptionPane;
+import java.util.Scanner;
+public class TwelveDaysOfChristmas 
+{
+	public static void main(String[] args)
+	{
+		String onThe = "On the ";
+		String dayOfChristmas = "day of christmas, my love gave to me";
+		String V1 = "\na partridge in a pear tree";
+		String V2 = "\ntwo turtle doves";
+		String V3 = "\nthree French hens";
+		String V4 = "\nFour calling birds";
+		String V5 = "\nfive golden rings";
+		String V6 = "\nsix geese a laying";
+		String V7 = "\nseven swans a swimming";
+		String V8 = "\neight maids a milking";
+		String V9 = "\nnine ladies dancing";
+		String V10 = "\nten lords a leaping";
+		String V11 = "\neleven pipers piping";
+		String V12 = "\ntwelve drummers drumming";
+		for (int DayOfChristmas=1; DayOfChristmas <= 12; DayOfChristmas ++) {
+		switch (DayOfChristmas)
+		{
+		case 1:
+			System.out.print(""+onThe+"First " +dayOfChristmas);
+			System.out.println(" "+ V1);
+			break;
+		case 2:
+			System.out.print(""+onThe+"Second " +dayOfChristmas);
+			System.out.println(" "+ V2+V1);
+			break;
+		case 3:
+			System.out.print(""+onThe+"Third " +dayOfChristmas);
+			System.out.println(" "+V3+V2+V1);
+			break;
+		case 4:
+			System.out.print(""+onThe+"Fourth " +dayOfChristmas);
+			System.out.println(" "+ V4+ V3+ V2+ V1);
+			break;
+		case 5:
+			System.out.print(""+onThe+"Fifth " +dayOfChristmas);
+			System.out.println(" "+ V5+ V4+ V3+ V2+ V1);
+			break;
+		case 6:
+			System.out.print(""+onThe+"Sixth " +dayOfChristmas);
+			System.out.println(" "+ V6+ V5+ V4+ V3+ V2+ V1);
+			break;
+		case 7:
+			System.out.print(""+onThe+"Seventh " +dayOfChristmas);
+			System.out.println(" "+ V7+ V6+ V5+ V4+ V3+ V2+ V1);
+			break;
+		case 8:
+			System.out.print(""+onThe+"Eighth " +dayOfChristmas);
+			System.out.println(" "+ V1+ V2+ V3+ V4+ V5+ V6+ V7+ V8);
+			break;
+		case 9:
+			System.out.print(""+onThe+"Ninth " +dayOfChristmas);
+			System.out.println(" "+V9+V8+V7+ V6+ V5+V4+ V3+ V2+ V1);
+			break;
+		case 10:
+			System.out.print(""+onThe+"Tenth " +dayOfChristmas);
+			System.out.println(" "+V10+V9+V8+V7+ V6+ V5+V4+ V3+ V2+ V1);
+			break;
+		case 11:
+			System.out.print(""+onThe+"Eleventh " +dayOfChristmas);
+			System.out.println(" "+ V11+ V10+V9+V8+V7+ V6+ V5+V4+ V3+ V2+ V1);
+			break;
+		case 12:
+			System.out.print(""+onThe+"Twelveth " +dayOfChristmas);
+			System.out.println(" "+V12+ V11+ V10+V9+V8+V7+ V6+ V5+V4+ V3+ V2+ V1);
+		break;
+		default:
+			System.out.print("Should not occur as default case.");
+		}
+		}
+		
+	}
+}
