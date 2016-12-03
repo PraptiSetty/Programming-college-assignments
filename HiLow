@@ -1,0 +1,72 @@
+import java.util.Random;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class HiLow {
+
+	public static final int GUESSES_ALLOWED = 4;
+	
+	public static final int JACK = 11;
+	public static final int QUEEN = 12;
+	public static final int KING = 13;
+	public static final int ACE = 1;
+
+	public static void main(String[] args) {
+		JOptionPane.showMessageDialog(null,
+				"Welcome to the High Low Card Game. Here are your instructions. "
+						+ "\nYou will be presented with a card from a full deck of cards. "
+						+ "\nYou must then guess whether the next card will be Higher (Hi), Lower (Lo) or Equal to this card. "
+						+ "\nIf you guess correctly, you will be presented with the next card. "
+						+ "\nIf your guess is incorrect, the game will terminate as you lost the game. "
+						+ "\nIn order to win, you must make 4 correct guesses in a row. \nLets begin");
+						
+		JOptionPane.showMessageDialog(null, "Note that \nACE = 1, \nJACK = 11, \nQUEEN = 12, \nKING = 13");
+		
+		int correctGuessesMade = 0;
+		Random generator = new Random();
+        int randomCard;
+        int nextRandomCard = generator.nextInt( KING+1 );
+        
+        
+        System.out.print("The first card is " + nextRandomCard);
+        nextRandomCard = generator.nextInt( KING+1 );
+		do 
+		{  
+		System.out.print("\nMAKE YOUR GUESS (Hi) or (Lo): ");
+		Scanner input = new Scanner( System.in );
+		randomCard = nextRandomCard;
+		nextRandomCard = generator.nextInt( KING+1 );
+	
+		if (input.hasNext("Hi") || input.hasNext("Lo"))
+		{
+			if (input.hasNext("Hi") && (nextRandomCard > randomCard))
+			{
+			correctGuessesMade++;
+			JOptionPane.showMessageDialog(null, "The next card was " + nextRandomCard + " and your guess was correct.");
+			}
+			else if (input.hasNext("Lo") && (nextRandomCard < randomCard))
+			{
+			correctGuessesMade++;
+			JOptionPane.showMessageDialog(null, "The next card was " + nextRandomCard + " and your guess was correct.");
+			}
+			else
+			{
+			JOptionPane.showMessageDialog(null, "The next card was " + nextRandomCard+". Your Guess was Wrong. Better luck next time!");
+			}
+		} 
+		else if (input.hasNext())
+		{
+			JOptionPane.showMessageDialog(null, "INVALID INPUT");
+		}
+		} while (correctGuessesMade <= GUESSES_ALLOWED) ;
+		if(correctGuessesMade == 4)
+			{
+			JOptionPane.showMessageDialog(null,  "Congratulations, You guessed correctly 4 times. Game won." );
+			}
+		else 
+		{
+			JOptionPane.showMessageDialog(null, "You lost. Game terminated.");
+		}
+	}
+
+}
