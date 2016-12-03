@@ -1,0 +1,158 @@
+import java.util.Scanner;
+
+public class ValidDate {
+
+	public static final int DAYS_IN_APRIL_JUNE_SEPT_NOV = 30;
+	public static final int DAYS_IN_FEBRUARY_NORMALLY = 28;
+	public static final int DAYS_IN_FEBRUARY_IN_LEAP_YEAR = 29;
+	public static final int DAYS_IN_MOST_MONTHS = 31;
+	public static final int NUMBER_OF_MONTHS = 12;
+
+	public static void main(String[] args) {
+
+	   try
+		{	
+		System.out.println("Enter date (day/month/year):");
+		Scanner scanner = new Scanner( System.in );
+		scanner.useDelimiter("[/\r]");
+		int day = scanner.nextInt();
+		int month = scanner.nextInt();
+		int year = scanner.nextInt();
+		if (validDate( day, month, year))
+		{
+			System.out.println("" + day + "/" + month + "/" + year + " is a valid date.");
+			System.out.println(""+ dayOfTheWeek(day, month, year)+","+ day + numberEnding( day ) + monthName(month) + " "+year);
+		}
+		else
+		{
+			System.out.println( "" + day + "/" + month + "/" + year + " is not a valid date.");
+		}
+		scanner.close();
+			
+		}
+		catch (NullPointerException exception)
+		{
+			
+		}
+		catch (java.util.NoSuchElementException exception)
+		{
+		System.out.println( "No number entered. Error");
+		}
+		
+		}
+	public static boolean validDate( int day, int month, int year)
+		{
+			return ((year >= 0) && (month >= 1) && (month <= NUMBER_OF_MONTHS) &&
+					(day >= 1) && (day <= daysInMonth( month, year )));
+		}	
+	public static int daysInMonth( int month, int year )
+		{
+			int numberOfDaysInMonth = DAYS_IN_MOST_MONTHS;
+			switch (month)
+			{
+			case 2:
+				numberOfDaysInMonth = isLeapYear( year ) ? DAYS_IN_FEBRUARY_IN_LEAP_YEAR :
+					                                       DAYS_IN_FEBRUARY_NORMALLY;
+				break;
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+				numberOfDaysInMonth = DAYS_IN_APRIL_JUNE_SEPT_NOV;
+				break;
+			default:
+				numberOfDaysInMonth = DAYS_IN_MOST_MONTHS;
+				break;
+			}
+			return numberOfDaysInMonth;
+		}
+	public static boolean isLeapYear( int year )
+
+		{
+			return (((year%4 == 0) && (year%100 != 0)) || (year%400 == 0));
+		}
+	public static String numberEnding( int day )
+	{
+		String ending = " ";
+		if( (day == 11) || (day == 12) || (day == 13) )  
+			ending = "th";
+		
+		else if (day%10 == 1)
+			ending = "st";	
+		
+		else if (day%10 == 2)
+			ending = "nd";	
+		
+		else if (day%10 == 3)
+			ending = "rd";
+		
+		else
+			ending = "th";
+		
+		return ending   ;
+	}
+	public static String monthName( int month )
+	{
+		String theMonthName = " ";
+		switch (month)
+		{
+		case 1: theMonthName = " January";
+			break;
+		case 2: theMonthName = "  February";
+			break;
+		case 3: theMonthName = " March";
+			break;
+		case 4: theMonthName = " April";
+			break;
+		case 5: theMonthName = " May";
+			break;
+		case 6: theMonthName = " June";
+			break;
+		case 7: theMonthName = " July";
+			break;
+		case 8: theMonthName = " August";
+			break;
+		case 9: theMonthName = " September";
+			break;
+		case 10: theMonthName = " October";
+			break;
+		case 11: theMonthName = " November";
+			break;
+		case 12: theMonthName = " December";
+			break;
+		default: theMonthName = " Default cae. Should not happen.";
+			break;
+		}
+		return theMonthName ;
+	}
+	public static String dayOfTheWeek( int day, int month, int year)
+	{
+		String weekDay =" ";
+		int y = year%100;
+		int c = year/100;
+		
+		int w = Math.floorMod((int) (day + Math.floor(2.6 * (((month + 9) % 12) + 1) - 0.2) + y + 
+				Math.floor(y/4) + Math.floor(c/4) - 2*c),7);
+		
+		switch (w)
+		{
+		case 0:weekDay ="Sunday";
+			break;
+		case 1: weekDay ="Monday";
+			break;
+		case 2: weekDay ="Tuesday";
+			break;
+		case 3: weekDay ="Wednesday";
+			break;
+		case 4: weekDay ="Thursday";
+			break;
+		case 5: weekDay ="Friday";
+			break;
+		case 6: weekDay ="Saturday";
+			break;
+			default: weekDay =" Should Not Happen. default case";
+				break;
+		}
+		return weekDay; 
+	}
+}
