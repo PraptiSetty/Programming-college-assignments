@@ -120,7 +120,7 @@ public class ValidDate {
 			break;
 		case 12: theMonthName = " December";
 			break;
-		default: theMonthName = " Default cae. Should not happen.";
+		default: theMonthName = " Default case. Should not happen.";
 			break;
 		}
 		return theMonthName ;
